@@ -1,3 +1,9 @@
+
+// Shrink board as game progresses 345
+// adjust scoreKeep to track score to adjust
+// change move distance + boundaries
+// High score and new game/save game
+
 var app = new Vue({
     el:"#app",
 
@@ -6,8 +12,56 @@ var app = new Vue({
         piece_y:0,
         goal_x:0,
         goal_y:0,
-        score:0,
+        score:999,
+        list_beginner:[
+            "Awesome Sauce!",
+            "Amazing Job!",
+            "Wow!",
+            "Great Work!",
+            "Epic Score!",
+            "Wowza!",
+            "Incredible!",
+        ],
+        list_intermediate:[
+            "Amazing!",
+            "You're a Rockstar!",
+            "You're Killing It!",
+            "You're a Legend!",
+            "You're Nuts!",
+            "This is Epic!",
+            "Can't Believe It!",
+            "You've Got Skill!",
+        ],
+        list_pro:[
+            "Ka-Chow!",
+            "PogChamp!",
+            "You're a Legend!",
+            "This is Epic!",
+            "You're a Pro!",
+            "Ph1lza Would Be Proud!",
+            "Cracked at the Craft!",
+            "1000 IQ Moment!",
+            "Definitely Poggers!",
+            "You're Insane!",
+            "You almost have 0.00021% of Shaggy's Power",
+            "You're Almost There!"
+        ],
+        list_beyond:[
+            "You Can Stop Now",
+            "You Don't Need To Play Anymore",
+            "Why Are You Still Playing?",
+            "Seriously, You Can Stop Now",
+            "Are You Okay?",
+            "Why Are You Still Here?",
+            "You Can Go Now",
+            "Please Get Some Help",
+            "It's Okay To Stop Now",
+            "Please Stop Playing",
+            "Are You Done Yet?",
+        ],
+        testcomment:"",
         comment:""
+
     },
     created: function(){
         window.addEventListener("keydown", this.keyEvents);
@@ -83,78 +137,38 @@ var app = new Vue({
             }
         },
         scoreCheck: function(){
-            if (this.score == 3){
+            // specifics 3, 69, 420, 690,
+            // 10, 15, 25, 75, 50,100
+            if (this.score == 10 || this.score == 15){
+                var beginnerChosen = Math.floor(Math.random() * this.list_beginner.length);
+                this.comment = this.list_beginner[beginnerChosen];
+            } else if (this.score > 10 && this.score % 25 == 0 && this.score < 500){
+                var beginnerChosen = Math.floor(Math.random() * this.list_beginner.length);
+                this.comment = this.list_beginner[beginnerChosen];
+            } else if (this.score >= 500 && this.score % 25 == 0 && this.score < 750){
+                var intermediateChosen = Math.floor(Math.random() * this.list_intermediate.length);
+                this.comment = this.list_intermediate[intermediateChosen];
+            } else if (this.score >= 750 && this.score % 25 == 0 && this.score < 1000){
+                var proChosen = Math.floor(Math.random() * this.list_pro.length);
+                this.comment = this.list_pro[proChosen];
+            } else if (this.score == 3){
                 this.comment = "Three in a Row!";
-            } else if (this.score == 10){
-                this.comment = "Awesome Sauce!";
-            } else if (this.score == 15){
-                this.comment = "Amazing Job!";
-            } else if (this.score == 25){
-                this.comment = "Wow!";
-            } else if (this.score == 50){
-                this.comment = "You're a Rockstar!";
-            } else if (this.score == 69){
+            } else if (this.score == 69 || this.score == 690){
                 this.comment = "Nice!";
-            } else if (this.score == 75){
-                this.comment = "You're Killing It!";
-            } else if (this.score == 100){
-                this.comment = "You're a Legend!";
-            } else if (this.score == 250){
-                this.comment = "POG!";
             } else if (this.score == 420){
-                this.comment = "Funny Number!";
-            } else if (this.score == 500){
-                this.comment = "You've Got Skill!";
-            } else if (this.score == 690){
-                this.comment = "Nice!";
-            } else if (this.score == 750){
-                this.comment = "You're Insane!";
+                this.comment = "Funny Number!" 
             } else if (this.score == 1000){
                 this.comment = "WINNER!";
-            } else if (this.score == 1001){
-                this.comment = "You're Still Playing?";
             } else if (this.score == 1005){
-                this.comment = "You Can Stop Now";
-            } else if (this.score == 1010){
-                this.comment = "You Don't Need To Play Anymore";
-            } else if (this.score == 1015){
-                this.comment = "Why Are You Still Playing?";
-            } else if (this.score == 1020){
-                this.comment = "Seriously, You Can Stop Now";
-            } else if (this.score == 1025){
-                this.comment = "Are You Okay?";
-            } else if (this.score == 1030){
-                this.comment = "Please Get Some Help";
-            } else if (this.score == 1035){
-                this.comment = "Why Are You Still Here?";
-            } else if (this.score == 1040){
-                this.comment = "You Can Go Now";
-            } else if (this.score == 1045){
-                this.comment = "It's Okay To Stop Now";
-            } else if (this.score >= 1050 && this.score < 2000){
-                this.comment = "Please Stop Playing";
-            } else if (this.score == 2000){
-                this.comment = "10";
-            } else if (this.score == 2001){
-                this.comment = "9";
-            } else if (this.score == 2002){
-                this.comment = "8";
-            } else if (this.score == 2003){
-                this.comment = "7";
-            } else if (this.score == 2004){
-                this.comment = "6";
-            } else if (this.score == 2005){
-                this.comment = "5";
-            } else if (this.score == 2006){
-                this.comment = "4";
-            } else if (this.score == 2007){
-                this.comment = "3";
-            } else if (this.score == 2008){
-                this.comment = "2";
-            } else if (this.score == 2009){
-                this.comment = "1";
-            } else if (this.score == 2050){
-                this.comment = "Are You Gone Yet?";
+                this.comment = "You're Still Playing?";
+            } else if (this.score > 1005 && this.score % 10 == 0 && this.score < 5000){
+                var beyondChosen = Math.floor(Math.random() * this.list_beyond.length);
+                this.comment = this.list_beyond[beyondChosen];
+            } else if (this.score >= 5000){
+                this.comment = "GAME OVER";
+                this.score = "N/A";
+                this.goal_x = 475;
+                this.goal_y = 225;
             } else {
                 this.comment = "";
             }
