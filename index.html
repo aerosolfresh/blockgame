@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/blockgame.png" />
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Block Game</title>
+</head>
+<div id="app">
+    <h1>Block Game</h1>
+    <div class="border">
+        <div class="board">
+            <div class="score" v-model="scoreKeep"> Score: {{ score }} </div>
+            <h2 v-model="scoreCheck" id="win"> {{ comment }} </h2>
+            <div class="piece" v-bind:style="pieceStyle"></div>
+            <div class="goal" v-bind:style="goalStyle"></div>
+        </div>
+    </div>
+    <div class="alpha">This game is currently incomplete and <br>may include some bugs.<br><br> 
+        Please report any bugs that you find to user Duck.<br>
+    </div>
+    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="app.js"></script>
+</html>
