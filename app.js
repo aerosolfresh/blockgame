@@ -1,4 +1,4 @@
-
+// Ideas for future Block Game:
 // Shrink board as game progresses 345
 // adjust scoreKeep to track score to adjust
 // change move distance + boundaries
