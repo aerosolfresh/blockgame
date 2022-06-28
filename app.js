@@ -70,16 +70,16 @@ var app = new Vue({
     },
     methods:{
         keyEvents: function(event){
-            if(event.which == 39){
+            if(event.which == 39 || event.which == 68){
                 event.preventDefault()
                 this.moveRight();
-            } else if(event.which == 37){
+            } else if(event.which == 37 || event.which == 65){
                 event.preventDefault()
                 this.moveLeft();
-            } else if(event.which == 38){
+            } else if(event.which == 38 || event.which == 87){
                 event.preventDefault()
                 this.moveUp();
-            } else if(event.which == 40){
+            } else if(event.which == 40 || event.which == 83){
                 event.preventDefault()
                 this.moveDown();
             }
