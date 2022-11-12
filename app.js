@@ -12,7 +12,7 @@ var app = new Vue({
         piece_y:0,
         goal_x:0,
         goal_y:0,
-        score:0,
+        score:995,
         list_beginner:[
             "Awesome Sauce!",
             "Amazing Job!",
